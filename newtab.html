@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Tab — RiddleDaily</title>
+  <link rel="stylesheet" href="lib/tailwind.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="lib/lucide.min.js"></script>
+</head>
+<body class="newtab-bg">
+  <div id="confetti-container" class="confetti-container"></div>
+
+  <div class="min-h-screen flex flex-col items-center justify-center px-6 py-12 max-w-3xl mx-auto">
+    <!-- Header -->
+    <header class="text-center mb-8 fade-in">
+      <div class="flex items-center justify-center gap-3 mb-2">
+        <img src="icons/icon48.png" alt="" class="w-10 h-10 rounded-xl shadow-lg" onerror="this.style.display='none'">
+        <h1 class="text-3xl font-extrabold gradient-text">RiddleDaily</h1>
+      </div>
+      <p id="greeting" class="text-theme-secondary text-sm"></p>
+    </header>
+
+    <!-- Loading -->
+    <div id="loading" class="text-center py-20">
+      <div class="loading-spinner mx-auto mb-4"></div>
+      <p class="text-theme-secondary">Preparing today's riddle...</p>
+    </div>
+
+    <!-- Main card -->
+    <main id="main" class="w-full hidden fade-in">
+      <div class="card card-gradient p-8 mb-6 slide-up">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-sm font-bold text-theme-accent uppercase tracking-widest">Today's Riddle</span>
+          <div id="badges" class="flex gap-2"></div>
+        </div>
+        <p id="riddle-text" class="riddle-text text-xl text-theme-primary mb-6 text-center"></p>
+
+        <div id="hints-area" class="mb-4 hidden"></div>
+
+        <div class="flex flex-wrap gap-3 justify-center mb-6">
+          <button id="hint-btn" class="btn btn-secondary">
+            <i data-lucide="lightbulb" class="w-4 h-4"></i> Hint
+          </button>
+          <button id="reveal-btn" class="btn btn-secondary">
+            <i data-lucide="eye" class="w-4 h-4"></i> Reveal
+          </button>
+          <button id="random-btn" class="btn btn-secondary">
+            <i data-lucide="shuffle" class="w-4 h-4"></i> Random
+          </button>
+        </div>
+
+        <div id="answer-area" class="answer-reveal mb-6">
+          <div id="answer-box" class="answer-box spoiler-blur max-w-md mx-auto">
+            <p class="text-sm text-theme-muted">Answer</p>
+            <p id="answer-text" class="text-2xl font-bold text-theme-accent"></p>
+          </div>
+        </div>
+
+        <div class="flex gap-3 max-w-md mx-auto">
+          <input type="text" id="guess-input" class="input flex-1" placeholder="Your answer..." autocomplete="off">
+          <button id="submit-btn" class="btn btn-primary px-6">Submit</button>
+        </div>
+        <div id="feedback" class="hidden mt-4 max-w-md mx-auto"></div>
+      </div>
+
+      <!-- Quote & fun fact -->
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="card p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <i data-lucide="quote" class="w-4 h-4 text-theme-accent"></i>
+            <span class="text-xs font-bold uppercase text-theme-muted">Daily Inspiration</span>
+          </div>
+          <p id="quote-text" class="text-sm italic text-theme-primary"></p>
+          <p id="quote-author" class="text-xs text-theme-muted mt-2"></p>
+        </div>
+        <div class="card p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <i data-lucide="sparkles" class="w-4 h-4 text-theme-accent"></i>
+            <span class="text-xs font-bold uppercase text-theme-muted">Brain Fact</span>
+          </div>
+          <p id="fun-fact" class="text-sm text-theme-secondary"></p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="flex items-center justify-center gap-4 mt-8 text-sm text-theme-muted">
+        <span id="streak-info" class="streak-badge hidden"></span>
+        <button id="open-extension" class="btn btn-ghost text-xs">
+          <i data-lucide="puzzle" class="icon-sm"></i> Open Extension
+        </button>
+        <button id="theme-toggle" class="btn btn-ghost btn-icon">
+          <i data-lucide="sun" class="w-4 h-4" id="theme-icon"></i>
+        </button>
+      </footer>
+    </main>
+  </div>
+
+  <script type="module" src="newtab.js"></script>
+</body>
+</html>

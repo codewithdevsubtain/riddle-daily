@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <circle cx="100" cy="100" r="70" fill="#10b981" opacity="0.15"/>
+  <circle cx="100" cy="100" r="50" fill="#10b981" opacity="0.3"/>
+  <path d="M70 100 L90 120 L130 80" stroke="#10b981" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="100" y="175" text-anchor="middle" fill="#10b981" font-size="16" font-weight="bold" font-family="sans-serif">Brilliant!</text>
+</svg>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RiddleDaily Settings</title>
+  <link rel="stylesheet" href="lib/tailwind.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="lib/lucide.min.js"></script>
+</head>
+<body class="min-h-screen" style="background: var(--bg-primary)">
+  <div class="max-w-2xl mx-auto px-6 py-10">
+    <header class="flex items-center gap-3 mb-8">
+      <img src="icons/icon48.png" alt="" class="w-12 h-12 rounded-xl" onerror="this.style.display='none'">
+      <div>
+        <h1 class="text-2xl font-extrabold gradient-text">RiddleDaily Settings</h1>
+        <p class="text-sm text-theme-secondary">Customize your puzzle experience</p>
+      </div>
+    </header>
+
+    <!-- Appearance -->
+    <section class="card p-6 mb-4">
+      <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+        <i data-lucide="palette" class="w-5 h-5 text-theme-accent"></i> Appearance
+      </h2>
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="font-medium text-sm">Theme</p>
+            <p class="text-xs text-theme-muted">Light, dark, or follow system</p>
+          </div>
+          <select id="setting-theme" class="input w-40 text-sm py-2">
+            <option value="system">System</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notifications -->
+    <section class="card p-6 mb-4">
+      <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+        <i data-lucide="bell" class="w-5 h-5 text-theme-accent"></i> Notifications
+      </h2>
+      <label class="flex items-center justify-between cursor-pointer">
+        <div>
+          <p class="font-medium text-sm">Daily riddle reminders</p>
+          <p class="text-xs text-theme-muted">Get notified if you haven't solved today's riddle</p>
+        </div>
+        <input type="checkbox" id="setting-notifications" class="w-5 h-5 accent-purple-500">
+      </label>
+    </section>
+
+    <!-- Sound -->
+    <section class="card p-6 mb-4">
+      <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+        <i data-lucide="volume-2" class="w-5 h-5 text-theme-accent"></i> Sound Effects
+      </h2>
+      <label class="flex items-center justify-between cursor-pointer">
+        <div>
+          <p class="font-medium text-sm">Enable sounds</p>
+          <p class="text-xs text-theme-muted">Subtle clicks and success chimes</p>
+        </div>
+        <input type="checkbox" id="setting-sound" class="w-5 h-5 accent-purple-500">
+      </label>
+    </section>
+
+    <!-- Custom Riddles -->
+    <section class="card p-6 mb-4">
+      <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+        <i data-lucide="plus-circle" class="w-5 h-5 text-theme-accent"></i> Add Your Own Riddle
+      </h2>
+      <div class="space-y-3">
+        <textarea id="custom-text" class="input text-sm" rows="3" placeholder="Riddle text..."></textarea>
+        <input type="text" id="custom-answer" class="input text-sm" placeholder="Answer">
+        <input type="text" id="custom-hint" class="input text-sm" placeholder="Hint (optional)">
+        <div class="flex gap-3">
+          <select id="custom-category" class="input text-sm flex-1 py-2"></select>
+          <select id="custom-difficulty" class="input text-sm flex-1 py-2">
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
+        <button id="add-riddle-btn" class="btn btn-primary w-full">
+          <i data-lucide="plus" class="w-4 h-4"></i> Add Riddle
+        </button>
+      </div>
+      <div id="custom-list" class="mt-4 space-y-2"></div>
+    </section>
+
+    <!-- Export / Import -->
+    <section class="card p-6 mb-4">
+      <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+        <i data-lucide="database" class="w-5 h-5 text-theme-accent"></i> Backup & Restore
+      </h2>
+      <p class="text-xs text-theme-muted mb-4">Export your progress, favorites, and custom riddles. Import on another device.</p>
+      <div class="flex gap-3">
+        <button id="export-btn" class="btn btn-secondary flex-1">
+          <i data-lucide="download" class="w-4 h-4"></i> Export
+        </button>
+        <label class="btn btn-secondary flex-1 cursor-pointer">
+          <i data-lucide="upload" class="w-4 h-4"></i> Import
+          <input type="file" id="import-file" accept=".json" class="hidden">
+        </label>
+      </div>
+    </section>
+
+    <!-- Keyboard shortcuts -->
+    <section class="card p-6 mb-4">
+      <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+        <i data-lucide="keyboard" class="w-5 h-5 text-theme-accent"></i> Keyboard Shortcuts
+      </h2>
+      <div class="space-y-2 text-sm">
+        <div class="flex justify-between py-2 border-b border-theme">
+          <span>Random Riddle</span>
+          <kbd class="px-2 py-1 rounded bg-theme-secondary border border-theme text-xs font-mono">Ctrl+Shift+R</kbd>
+        </div>
+        <div class="flex justify-between py-2">
+          <span>Open RiddleDaily</span>
+          <kbd class="px-2 py-1 rounded bg-theme-secondary border border-theme text-xs font-mono">Ctrl+Shift+Y</kbd>
+        </div>
+      </div>
+      <p class="text-xs text-theme-muted mt-3">Customize shortcuts at chrome://extensions/shortcuts</p>
+    </section>
+
+    <!-- Danger zone -->
+    <section class="card p-6 border-red-200 dark:border-red-900">
+      <h2 class="text-lg font-bold mb-4 text-red-500 flex items-center gap-2">
+        <i data-lucide="alert-triangle" class="w-5 h-5"></i> Reset Progress
+      </h2>
+      <p class="text-xs text-theme-muted mb-4">This will erase all solved riddles, streaks, and favorites. Custom riddles are kept.</p>
+      <button id="reset-btn" class="btn btn-secondary text-red-500 border-red-300 hover:bg-red-50 dark:hover:bg-red-950">
+        Reset All Progress
+      </button>
+    </section>
+
+    <p class="text-center text-xs text-theme-muted mt-8">RiddleDaily v1.0.0 — Made with 🧠 for puzzle lovers</p>
+  </div>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>
